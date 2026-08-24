@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroCanvas from '../components/HeroCanvas.astro';
+import Ticker from '../components/Ticker.astro';
+import WorkCard from '../components/WorkCard.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ABCompare from '../components/ABCompare.astro';
+import { identity, hero, about, featured, works, services, skills, clean, site, url } from '../lib/content.js';
+
+const tickerItems = [...identity.roles, ...skills.slice(0, 3).map((s) => s.name)];
+const lead = featured.slice(0, 6);
+const serviceNames = services.enabled ? services.items.map((s) => s.name) : [];
+---
+<Base>
+  <!-- ------------------------------------------------------------ HERO -- -->
+  <section class="hero">
+    <HeroCanvas />
+    <div class="wrap hero__inner">
+      <p class="tag tag--signal hero__kicker">{hero.kicker}</p>
+
+      <h1 class="display hero__title">
+        {hero.lines.map((line, i) => (
+          <span class="hero__line"><span style={`--i:${i}`}>{line}</span></span>
+        ))}
+      </h1>
+
+      <div class="hero__foot">
+        <div>
+          <p class="lead hero__intro">{hero.intro}</p>
+          <div class="hero__actions" style="margin-top:2rem">
+            <a class="btn btn--solid btn--lg" href={url(hero.ctaPrimary.href)} data-magnetic="0.18">{hero.ctaPrimary.label}</a>
+            <a class="btn btn--lg" href={url(hero.ctaSecondary.href)}>{hero.ctaSecondary.label}</a>
+          </div>
+        </div>
+        <div class="hero__scroll">
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+          <span class="tag">Scroll</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Ticker items={tickerItems} />
+
+  <!-- ---------------------------------------------------- SELECTED WORK -- -->
+  <section class="section">
+    <div class="wrap">
+      <SectionHead num="01" title="Selected work" />
+      <div class="work-grid">
+        {lead.map((w, i) => <WorkCard work={w} eager={i < 3} />)}
+      </div>
+      <p style="margin-top:3rem">
+        <a class="btn" href={url("/work")}>All {works.length} projects</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------ APPROACH -->
+  <section class="section band">
+    <div class="wrap">
+      <SectionHead num="02" title="How I hear it" />
+      <div class="cols-2">
+        <div>
+          <p class="lead">{about.lead}</p>
+          <div class="prose" style="margin-top:1.5rem">
+            <p>{about.paragraphs[0]}</p>
+          </div>
+          <p style="margin-top:2rem"><a class="btn" href={url("/about")}>More about me</a></p>
+        </div>
+        <div>
+          <p class="tag">At a glance</p>
+          <dl class="proj__facts" style="margin-top:1rem">
+            {about.facts.map((f) => (
+              <div class="proj__fact"><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- BEFORE/AFTER -->
+  <ABCompare />
+
+  <!-- ------------------------------------------------------------ SERVICES -->
+  {services.enabled && (
+    <section class="section band">
+      <div class="wrap">
+        <SectionHead num="04" title="What I can do for your record" />
+        <div class="cols-2">
+          <div>
+            <ul class="steps steps--plain">
+              {services.items.map((s) => (
+                <li class="step">
+                  <span class="step__n"></span>
+                  <div>
+                    <h3 class="step__title">{s.name}</h3>
+                    <p class="step__body">{s.blurb}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="sticky-side">
+            <p class="tag">Next step</p>
+            <p class="lead" style="margin-top:1rem;max-width:34ch">Send the song and two reference tracks. I will tell you honestly what it needs.</p>
+            <p style="margin-top:2rem" class="row">
+              <a class="btn btn--solid" href={url("/contact")} data-magnetic="0.2">Start a project</a>
+              <a class="btn" href={url("/services")}>Scopes &amp; turnaround</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+</Base>

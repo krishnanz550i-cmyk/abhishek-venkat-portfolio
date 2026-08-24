@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, identity, services, liveSocial, clean, breadcrumbSchema } from '../lib/content.js';
+
+const email = clean(contact.email);
+const endpoint = clean(contact.formEndpoint);
+const schema = breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'Contact', href: '/contact' }]);
+const serviceNames = services.enabled ? services.items.map((s) => s.name) : [];
+---
+<Base title="Contact" description={`Get in touch with ${identity.name} about mixing, mastering, production or score.`} schema={schema}>
+  <section class="section" style="padding-top:9rem">
+    <div class="wrap">
+      <p class="tag tag--signal">Contact</p>
+      <h1 class="display" style="margin:1rem 0 2rem">Send me<br />the song</h1>
+
+      <div class="cols-2">
+        <div>
+          <p class="lead prose">{contact.note}</p>
+
+          <form class="form" style="margin-top:2.5rem"
+                data-contact
+                data-endpoint={endpoint || ''}
+                data-email={email || ''}
+                method="POST"
+                action={endpoint || undefined}>
+            <div class="form__row">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+            </div>
+
+            {serviceNames.length > 0 && (
+              <div class="field">
+                <label for="service">What do you need?</label>
+                <select id="service" name="service">
+                  <option value="">Not sure yet</option>
+                  {serviceNames.map((s) => <option value={s}>{s}</option>)}
+                </select>
+              </div>
+            )}
+
+            <div class="field">
+              <label for="message">About the project</label>
+              <textarea id="message" name="message" required
+                        placeholder="What is the song, when do you need it, and what are you referencing?"></textarea>
+              <p class="field__hint">Links to a rough mix or reference tracks help more than anything else.</p>
+            </div>
+
+            <!-- A field real people never see and never fill in. Bots do, and
+                 those submissions are dropped. No third-party captcha, no
+                 tracking, nothing for a visitor to solve. -->
+            <div class="visually-hidden" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="row" style="margin-top:.5rem">
+              <button class="btn btn--solid btn--lg" type="submit" data-magnetic="0.15">Send enquiry</button>
+              <span class="mono dimmer" data-contact-status role="status" aria-live="polite"></span>
+            </div>
+
+            <p class="form__note" data-contact-note hidden></p>
+          </form>
+        </div>
+
+        <div class="sticky-side">
+          <p class="tag">Direct</p>
+          <dl class="proj__facts" style="margin-top:1rem">
+            {email && (
+              <div class="proj__fact"><dt>Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd></div>
+            )}
+            {(contact.phones || []).filter((p) => clean(p.number)).map((p) => (
+              <div class="proj__fact">
+                <dt>Phone · {p.label}</dt>
+                <dd><a href={`tel:${p.number.replace(/[^+\d]/g, '')}`}>{p.number}</a></dd>
+              </div>
+            ))}
+            <div class="proj__fact"><dt>Based in</dt><dd>{identity.location}</dd></div>
+            <div class="proj__fact"><dt>Replies</dt><dd>{contact.responseTime}</dd></div>
+          </dl>
+
+          {liveSocial.length > 0 && (
+            <div style="margin-top:2rem">
+              <p class="tag">Elsewhere</p>
+              <div class="pill-row" style="margin-top:1rem">
+                {liveSocial.map((s) => (
+                  <a class="chip" href={s.url} target="_blank" rel="noopener me">{s.label} ↗</a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

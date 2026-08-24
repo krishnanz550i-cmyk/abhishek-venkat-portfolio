@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { works, url } from '../lib/content.js';
+---
+<Base title="Page not found" description="That page does not exist.">
+  <section class="section" style="padding-top:11rem;min-height:70svh">
+    <div class="wrap">
+      <p class="tag tag--signal">Error 404</p>
+      <h1 class="display" style="margin:1rem 0 1.5rem">Dead<br />air</h1>
+      <p class="lead prose">That page is not here. It may have moved, or the link may have a typo in it.</p>
+      <div class="row" style="margin-top:2.5rem">
+        <a class="btn btn--solid" href={url("/")}>Back to the start</a>
+        <a class="btn" href={url("/work")}>See the work</a>
+      </div>
+    </div>
+  </section>
+</Base>

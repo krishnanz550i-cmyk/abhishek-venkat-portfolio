@@ -1,0 +1,57 @@
+---
+import { identity, clean, url } from '../lib/content.js';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+];
+const isOn = (href) => path === href || (href !== '/' && path.startsWith(href));
+const open = identity.availabilityState === 'open';
+---
+<header class="nav" data-nav transition:persist="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href={url("/")} aria-label={`${identity.name} — home`}>
+      <span class="nav__mark" aria-hidden="true">{identity.initials}</span>
+      <span class="nav__name nav__name--full">{identity.name}</span>
+      <span class="nav__name nav__name--short">{identity.shortName}</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      {links.map((l) => (
+        <a href={url(l.href)} class:list={['nav__link', { 'is-on': isOn(l.href) }]}
+           aria-current={isOn(l.href) ? 'page' : undefined}>
+          <span>{l.label}</span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="nav__end">
+      {clean(identity.availability) && (
+        <span class="status" title={identity.availability}>
+          <span class:list={['status__dot', { 'is-open': open }]} aria-hidden="true"></span>
+          <span class="status__text">{open ? 'Available' : 'Booked'}</span>
+        </span>
+      )}
+      <button class="nav__burger" data-menu-toggle aria-expanded="false" aria-controls="menu">
+        <span class="visually-hidden">Menu</span>
+        <span class="nav__burger-bar" aria-hidden="true"></span>
+        <span class="nav__burger-bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Full-screen menu for narrow viewports. Rendered in the HTML rather than
+     built by script, so it is present for screen readers immediately. -->
+<div class="menu" id="menu" data-menu hidden>
+  <nav class="menu__list" aria-label="Main, mobile">
+    {links.map((l, i) => (
+      <a href={url(l.href)} class="menu__link" style={`--i:${i}`}>
+        <span class="menu__num">{String(i + 1).padStart(2, '0')}</span>
+        <span class="menu__label">{l.label}</span>
+      </a>
+    ))}
+  </nav>
+</div>

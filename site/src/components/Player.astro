@@ -1,0 +1,75 @@
+---
+/**
+ * Player.astro — the player docked at the bottom of every page.
+ *
+ * transition:persist is what makes this special: when a visitor clicks through
+ * to another page, this element is MOVED to the new page rather than rebuilt,
+ * so the music does not stop. On a normal multi-page site that is not possible.
+ *
+ * Everything here is real markup, not built by script, so the controls exist
+ * for a screen reader before any JavaScript runs.
+ */
+import { site, url } from '../lib/content.js';
+// Audio paths are rewritten for wherever the site is published.
+const queue = (site.player?.queue || []).map((t) => ({ ...t, src: url(t.src) }));
+---
+{queue.length > 0 && (
+<div class="player" data-player transition:persist="player" aria-label="Audio player">
+  <audio data-audio preload="none" crossorigin="anonymous"></audio>
+
+  <div class="player__bar">
+    <button class="player__play" data-play aria-label="Play" aria-pressed="false">
+      <svg class="i-play" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>
+      <svg class="i-pause" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M7 4.5h3.6v15H7zM13.4 4.5H17v15h-3.6z"/></svg>
+    </button>
+
+    <div class="player__meta">
+      <p class="player__title" data-title>{queue[0].title}</p>
+      <p class="player__sub" data-sub>
+        <span data-sub-text>{queue[0].subtitle}</span>
+        {queue.some((q) => q.isDemo) && <span class="chip chip--demo" data-demo-chip hidden>Demo audio</span>}
+      </p>
+    </div>
+
+    <!-- The moving bars are drawn from the actual audio signal, not faked on a
+         timer. When nothing is playing the canvas shows a flat line. -->
+    <canvas class="player__vis" data-vis width="600" height="56" aria-hidden="true"></canvas>
+
+    <div class="player__seek">
+      <input class="player__range" data-seek type="range" min="0" max="1000" value="0" step="1"
+             aria-label="Seek" />
+      <span class="player__time mono"><span data-now>0:00</span> / <span data-dur>0:00</span></span>
+    </div>
+
+    <div class="player__side">
+      <button class="player__icon" data-prev aria-label="Previous track">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6 5h2.2v14H6zM19 5v14l-9.6-7z"/></svg>
+      </button>
+      <button class="player__icon" data-next aria-label="Next track">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M15.8 5H18v14h-2.2zM5 5l9.6 7L5 19z"/></svg>
+      </button>
+      <button class="player__icon player__icon--mute" data-mute aria-label="Mute" aria-pressed="false">
+        <svg class="i-vol" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16.5 12a3.5 3.5 0 0 0-2-3.16v6.32A3.5 3.5 0 0 0 16.5 12z"/></svg>
+        <svg class="i-muted" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM19.5 9.5 18 8l-2 2-2-2-1.5 1.5 2 2-2 2L14 15l2-2 2 2 1.5-1.5-2-2z"/></svg>
+      </button>
+      <button class="player__icon" data-queue-toggle aria-expanded="false" aria-controls="player-queue" aria-label="Show track list">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M4 6h12v2H4zM4 11h12v2H4zM4 16h8v2H4zM18 10l3 3-3 3z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <ul class="player__queue" id="player-queue" data-queue hidden>
+    {queue.map((t, i) => (
+      <li>
+        <button class="player__track" data-track={i} type="button">
+          <span class="player__track-num mono">{String(i + 1).padStart(2, '0')}</span>
+          <span class="player__track-title">{t.title}</span>
+          <span class="player__track-sub mono dimmer">{t.subtitle}</span>
+        </button>
+      </li>
+    ))}
+  </ul>
+
+  <script type="application/json" data-queue-data set:html={JSON.stringify(queue)}></script>
+</div>
+)}

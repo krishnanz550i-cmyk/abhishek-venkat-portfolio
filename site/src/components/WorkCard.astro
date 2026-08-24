@@ -1,0 +1,27 @@
+---
+import { coverFor, kindLabel, collectionLabel, url } from '../lib/content.js';
+const { work: w, eager = false } = Astro.props;
+// Tags drive the filter buttons. They live in the markup so filtering never
+// needs to know anything the page does not already say.
+const tags = ['all', w.kind, w.collection, ...(w.roles || []).map((r) => r.toLowerCase().replace(/\s+/g, '-'))].join(' ');
+const title = [w.title, w.subtitle].filter(Boolean).join(' — ');
+---
+<article class="work-card card" data-tags={tags} data-reveal>
+  <div class="work-card__media">
+    <img src={coverFor(w)} alt="" width="1000" height="1000"
+         loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <div class="work-card__overlay">
+      <span class="btn btn--ghost">View project</span>
+    </div>
+  </div>
+  <div class="work-card__body">
+    <h3 class="work-card__title">{w.title}</h3>
+    {w.subtitle && <p class="work-card__sub">{w.subtitle}</p>}
+    {w.with && <p class="work-card__sub">with {w.with}</p>}
+    <div class="work-card__roles">
+      <span class="chip chip--signal">{kindLabel(w.kind)}</span>
+      <span class="chip">{collectionLabel(w.collection)}</span>
+    </div>
+  </div>
+  <a class="work-card__link" href={url(`/work/${w.slug}`)}><span>{title}</span></a>
+</article>

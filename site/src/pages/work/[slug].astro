@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import { works, coverFor, kindLabel, collectionLabel, identity, workSchema, breadcrumbSchema, clean, url } from '../../lib/content.js';
+
+/** One page per project, generated at build time. Adding a project to
+ *  content/site.json creates its page automatically. */
+export function getStaticPaths() {
+  return works.map((w, i) => ({
+    params: { slug: w.slug },
+    props: {
+      work: w,
+      prev: works[(i - 1 + works.length) % works.length],
+      next: works[(i + 1) % works.length],
+    },
+  }));
+}
+
+const { work: w, prev, next } = Astro.props;
+const title = [w.title, w.subtitle].filter(Boolean).join(' — ');
+const schema = [
+  workSchema(w),
+  breadcrumbSchema([
+    { label: 'Home', href: '/' },
+    { label: 'Work', href: '/work' },
+    { label: title, href: `/work/${w.slug}` },
+  ]),
+];
+// Other projects a visitor who liked this one is most likely to want: same
+// collection first, then anything else in the same kind of work.
+const related = [
+  ...works.filter((x) => x.slug !== w.slug && x.collection === w.collection),
+  ...works.filter((x) => x.slug !== w.slug && x.collection !== w.collection && x.kind === w.kind),
+].slice(0, 4);
+---
+<Base title={title} description={w.summary} image={coverFor(w)} schema={schema} path={`/work/${w.slug}`}>
+  <article class="section" style="padding-top:9rem">
+    <div class="wrap">
+      <p class="tag"><a href={url("/work")}>← All work</a></p>
+
+      <div class="proj__head" style="margin-top:2.5rem">
+        <div class="proj__cover" data-reveal>
+          <img src={coverFor(w)} alt={`Cover artwork for ${title}`} width="1000" height="1000" fetchpriority="high" />
+        </div>
+
+        <div class="proj__meta">
+          <div>
+            <div class="pill-row" style="margin-bottom:1.2rem">
+              <span class="chip chip--signal">{kindLabel(w.kind)}</span>
+              <span class="chip">{collectionLabel(w.collection)}</span>
+              {w.series && <span class="chip">{w.series}</span>}
+            </div>
+            <h1 class="h2" style="font-size:var(--t-xl)">{w.title}</h1>
+            {w.subtitle && <p class="lead dim" style="margin-top:.6rem">{w.subtitle}</p>}
+          </div>
+
+          <p class="prose">{w.summary}</p>
+
+          <dl class="proj__facts">
+            {w.roles?.length > 0 && (
+              <div class="proj__fact"><dt>Role</dt><dd>{w.roles.join(' · ')}</dd></div>
+            )}
+            {w.with && <div class="proj__fact"><dt>With</dt><dd>{w.with}</dd></div>}
+            {w.discipline && <div class="proj__fact"><dt>Discipline</dt><dd>{w.discipline}</dd></div>}
+            <div class="proj__fact"><dt>Category</dt><dd>{kindLabel(w.kind)} · {collectionLabel(w.collection)}</dd></div>
+          </dl>
+
+          {w.links?.length > 0 ? (
+            <div class="proj__links">
+              {w.links.map((l) => (
+                <a class="btn" href={l.url} target="_blank" rel="noopener">
+                  {l.label}<span aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p class="mono dimmer">No public link for this one yet.</p>
+          )}
+        </div>
+      </div>
+
+      {w.story && (
+        <div class="prose" style="margin-top:4rem">
+          {w.story.map((p) => <p>{p}</p>)}
+        </div>
+      )}
+
+      {related.length > 0 && (
+        <section style="margin-top:6rem">
+          <SectionHead num="↳" title={w.collection === 'media' ? 'More screen work' : `More ${collectionLabel(w.collection).toLowerCase()}`} />
+          <div class="work-grid">
+            {related.map((r) => <WorkCard work={r} />)}
+          </div>
+        </section>
+      )}
+
+      <nav class="proj__nav" style="margin-top:5rem" aria-label="More projects">
+        <a href={url(`/work/${prev.slug}`)}>
+          <span class="tag">Previous</span>
+          <strong>{prev.title}</strong>
+        </a>
+        <a href={url(`/work/${next.slug}`)} style="text-align:right">
+          <span class="tag">Next</span>
+          <strong>{next.title}</strong>
+        </a>
+      </nav>
+    </div>
+  </article>
+</Base>

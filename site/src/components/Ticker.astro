@@ -1,0 +1,17 @@
+---
+/** A scrolling band of words. The list is duplicated because a marquee needs a
+ *  second copy to slide in behind the first; the copy is hidden from screen
+ *  readers so it is not announced twice. */
+const { items, duration = 42 } = Astro.props;
+---
+<div class="ticker">
+  <div class="marquee" style={`--marquee-dur:${duration}s`}>
+    {[0, 1].map((copy) => (
+      <div class="marquee__track" aria-hidden={copy === 1 ? 'true' : undefined}>
+        {items.map((t) => (
+          <span class="ticker__item">{t}<span class="ticker__dot"> ✦ </span></span>
+        ))}
+      </div>
+    ))}
+  </div>
+</div>

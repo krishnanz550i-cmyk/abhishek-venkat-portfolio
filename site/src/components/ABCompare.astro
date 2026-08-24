@@ -1,0 +1,99 @@
+---
+/**
+ * ABCompare.astro — "hear the difference" control.
+ *
+ * The single most persuasive thing a mix engineer can put on a website: the
+ * same performance, before and after. Two rules make it honest rather than a
+ * sales trick, and both are enforced here:
+ *
+ *  - The two files are LOUDNESS-MATCHED when they are made, so a listener is
+ *    comparing balance and tone, not one version being turned up.
+ *  - Switching is instant and gapless — both files play in sync and only the
+ *    gain changes — so the comparison is not clouded by a gap and a restart.
+ */
+import { site, url } from '../lib/content.js';
+import analysis from '../../public/audio/analysis.json';
+import peaks from '../../public/audio/peaks.json';
+
+const c = site.compare;
+const rawName = c.raw.src.split('/').pop();
+const mixName = c.mixed.src.split('/').pop();
+const A = analysis[rawName], B = analysis[mixName];
+
+// Facts pulled from measuring the actual files, so these numbers cannot drift
+// away from the audio they describe.
+const facts = A && B ? [
+  { label: 'Stereo image', a: A.stereo_correlation >= 0.999 ? 'Mono' : 'Stereo', b: 'Stereo' },
+  { label: 'Brightness', a: `${A.spectral_centroid_hz} Hz`, b: `${B.spectral_centroid_hz} Hz` },
+  { label: 'Energy above 6 kHz', a: `${A.energy_above_6k_pct}%`, b: `${B.energy_above_6k_pct}%` },
+  { label: 'Low-mid build-up', a: `${A.energy_200_500_pct}%`, b: `${B.energy_200_500_pct}%` },
+  { label: 'Dynamic range', a: `${A.crest_db} dB`, b: `${B.crest_db} dB` },
+] : [];
+---
+{c.enabled && (
+<section class="ab section" data-ab
+         data-raw={url(c.raw.src)} data-mixed={url(c.mixed.src)}
+         data-peaks={JSON.stringify({ raw: peaks[c.raw.src] || [], mixed: peaks[c.mixed.src] || [] })}>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03</span>
+      <h2 class="h2">{c.title}</h2>
+      <span class="line" aria-hidden="true"></span>
+      {c.isDemo && <span class="chip chip--demo">Demonstration audio</span>}
+    </div>
+
+    <div class="ab__grid">
+      <div class="ab__main">
+        <p class="lead ab__blurb">{c.blurb}</p>
+
+        <div class="ab__stage">
+          <!-- Both waveforms are drawn from the real files. The rough bounce is
+               visibly spikier and less full — you can see it before you hear it. -->
+          <canvas class="ab__wave" data-ab-wave width="1200" height="220" aria-hidden="true"></canvas>
+          <div class="ab__playhead" data-ab-head aria-hidden="true"></div>
+        </div>
+
+        <div class="ab__controls">
+          <button class="ab__play btn btn--solid btn--lg" data-ab-play aria-pressed="false">
+            <svg class="i-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+            <svg class="i-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M7 4.5h3.6v15H7zM13.4 4.5H17v15h-3.6z"/></svg>
+            <span data-ab-playlabel>Play both</span>
+          </button>
+
+          <div class="ab__switch" role="radiogroup" aria-label="Which version you are hearing">
+            <button class="ab__opt is-on" data-ab-side="raw" role="radio" aria-checked="true">
+              <span class="ab__opt-key mono">A</span>{c.raw.label}
+            </button>
+            <button class="ab__opt" data-ab-side="mixed" role="radio" aria-checked="false">
+              <span class="ab__opt-key mono">B</span>{c.mixed.label}
+            </button>
+            <span class="ab__thumb" aria-hidden="true"></span>
+          </div>
+
+          <p class="ab__hint mono dimmer">Press <kbd>A</kbd> / <kbd>B</kbd> to switch while it plays</p>
+        </div>
+
+        <p class="ab__matched mono">
+          <span class="ab__matched-dot" aria-hidden="true"></span>
+          Both versions play at a matched loudness. You are hearing the mix, not the volume.
+        </p>
+      </div>
+
+      {facts.length > 0 && (
+        <div class="ab__facts">
+          <p class="tag">Measured, not claimed</p>
+          <dl>
+            {facts.map((f) => (
+              <div class="ab__fact">
+                <dt>{f.label}</dt>
+                <dd><span class="ab__fact-a">{f.a}</span><span aria-hidden="true">→</span><span class="ab__fact-b">{f.b}</span></dd>
+              </div>
+            ))}
+          </dl>
+          <p class="mono dimmer ab__facts-note">Figures measured directly from the two files on this page.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+)}

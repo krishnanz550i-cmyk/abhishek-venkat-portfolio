@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Timeline from '../components/Timeline.astro';
+import { identity, about, experience, education, skills, softSkills, breadcrumbSchema, hasAsset, url } from '../lib/content.js';
+
+const portrait = hasAsset(about.portrait) ? url(about.portrait) : null;
+const schema = breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'About', href: '/about' }]);
+---
+<Base title="About" description={about.lead} schema={schema}>
+  <section class="section" style="padding-top:9rem">
+    <div class="wrap">
+      <p class="tag tag--signal">About</p>
+      <h1 class="display" style="margin:1rem 0 2.5rem">{identity.shortName}</h1>
+
+      <div class="cols-2">
+        <div>
+          <p class="lead">{about.lead}</p>
+          <div class="prose" style="margin-top:1.75rem">
+            {about.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          {about.philosophy && (
+            <blockquote style="margin-top:2.5rem;border-left:2px solid var(--signal);padding-left:1.5rem">
+              <p class="h3" style="font-size:var(--t-lg)">“{about.philosophy}”</p>
+            </blockquote>
+          )}
+        </div>
+
+        <div class="sticky-side">
+          {portrait && (
+            <figure class="portrait" data-reveal>
+              <img src={portrait} alt={about.portraitAlt} width="1200" height="1500"
+                   loading="eager" decoding="async" />
+            </figure>
+          )}
+          <p class="tag">At a glance</p>
+          <dl class="proj__facts" style="margin-top:1rem">
+            {about.facts.map((f) => (
+              <div class="proj__fact"><dt>{f.label}</dt><dd>{f.value}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <SectionHead num="01" title="Experience" />
+      <Timeline items={experience} kind="experience" />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead num="02" title="Training" />
+      <Timeline items={education} kind="education" />
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <SectionHead num="03" title="What I bring to a session" />
+      <div class="cols-3" data-reveal="stagger">
+        {skills.map((s) => (
+          <div class="card" style="padding:1.5rem">
+            <h3 class="h4" style="font-size:1.15rem">{s.name}</h3>
+            <p class="dim" style="margin-top:.6rem;font-size:var(--t-sm)">{s.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      {softSkills?.length > 0 && (
+        <div style="margin-top:3rem">
+          <p class="tag">Also true of working with me</p>
+          <div class="pill-row" style="margin-top:1rem">
+            {softSkills.map((s) => <span class="chip">{s}</span>)}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

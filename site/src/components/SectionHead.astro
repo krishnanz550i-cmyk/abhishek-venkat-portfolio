@@ -1,0 +1,9 @@
+---
+const { num, title, id } = Astro.props;
+---
+<div class="sec-head" data-reveal>
+  {num && <span class="num">{num}</span>}
+  <h2 class="h2" id={id}>{title}</h2>
+  <span class="line" aria-hidden="true"></span>
+  <slot />
+</div>

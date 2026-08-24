@@ -1,0 +1,12 @@
+---
+const { items, kind = 'experience' } = Astro.props;
+---
+<div class="timeline" data-reveal="stagger">
+  {items.map((it) => (
+    <div class="tl">
+      <p class="tl__when">{it.from} — {it.to}</p>
+      <h3 class="tl__org">{it.org}</h3>
+      <p class="tl__role">{kind === 'experience' ? it.role : it.award}</p>
+    </div>
+  ))}
+</div>

@@ -1,0 +1,39 @@
+---
+import { identity, contact, liveSocial, clean, url } from '../lib/content.js';
+const year = new Date().getFullYear();
+const email = clean(contact.email);
+---
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <p class="tag">Start a project</p>
+        <a class="footer__cta" href={url("/contact")}>
+          <span>Let's talk about your record</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        {email && <a class="footer__email" href={`mailto:${email}`}>{email}</a>}
+      </div>
+
+      {liveSocial.length > 0 && (
+        <nav class="footer__social" aria-label="Elsewhere">
+          <p class="tag">Elsewhere</p>
+          <ul>
+            {liveSocial.map((s) => (
+              <li><a href={s.url} rel="me noopener" target="_blank">{s.label}<span aria-hidden="true">↗</span></a></li>
+            ))}
+          </ul>
+        </nav>
+      )}
+    </div>
+
+    <hr class="rule" />
+
+    <div class="footer__base">
+      <p class="mono dimmer">© {year} {identity.name}. All rights reserved.</p>
+      <p class="mono dimmer">{identity.location}</p>
+    </div>
+  </div>
+</footer>

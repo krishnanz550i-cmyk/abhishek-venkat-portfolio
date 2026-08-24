@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-single/
+.astro/
+*.local
+.DS_Store

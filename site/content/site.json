@@ -1,0 +1,865 @@
+{
+  "_readme": "THIS IS THE ONLY FILE YOU NEED TO EDIT TO CHANGE THE WEBSITE. Every headline, project, link and price on the site comes from here. See content/GUIDE.md for what each field does. Anything marked NEEDS-CONFIRMATION is a detail we could not verify - replace the text and delete the flag.",
+  "meta": {
+    "siteUrl": "https://krishnanz550i-cmyk.github.io/abhishek-venkat-portfolio",
+    "title": "Abhishek Venkatasubramanian — Audio Engineer, Producer & Composer",
+    "description": "Audio engineer, music producer and composer. Mixing, mastering and production across Hindi, Tamil and devotional music, plus score and sound design for film, games and advertising. Trained at SAE Dubai.",
+    "locale": "en",
+    "themeColor": "#08080A",
+    "analytics": ""
+  },
+  "identity": {
+    "name": "Abhishek Venkatasubramanian",
+    "shortName": "Abhishek V.",
+    "initials": "AV",
+    "roles": [
+      "Audio Engineer",
+      "Music Producer",
+      "Composer",
+      "Vocalist"
+    ],
+    "tagline": "Records, produces, mixes and masters — with a classically trained ear.",
+    "location": "Dubai, UAE",
+    "availability": "Open to mixing, mastering and production work",
+    "availabilityState": "open",
+    "yearsFrom": 2019
+  },
+  "hero": {
+    "lines": [
+      "Sound",
+      "That Carries",
+      "Meaning"
+    ],
+    "kicker": "Audio Engineer / Producer / Composer",
+    "intro": "I produce, mix and master music — and write score and sound design for screen. Twelve years of Hindustani vocal training and western classical guitar sit behind every decision I make at the desk.",
+    "ctaPrimary": {
+      "label": "Hear the work",
+      "href": "/work"
+    },
+    "ctaSecondary": {
+      "label": "Start a project",
+      "href": "/contact"
+    }
+  },
+  "about": {
+    "portrait": "/img/portrait.jpg",
+    "portraitAlt": "Abhishek Venkatasubramanian singing into a microphone during a live performance",
+    "lead": "I am an audio engineer who produces, mixes and masters tracks — and a musician first.",
+    "paragraphs": [
+      "I trained in Indian classical music (Hindustani vocal) for over a decade and in western classical guitar alongside it. That double training is the reason I hear arrangement problems before I hear mix problems: if the parts are fighting for the same space, no amount of EQ will rescue them.",
+      "I hold a Bachelors of Audio from SAE Institute Dubai, and I have worked across live sound, studio assisting, media production and music education. My own catalogue runs from Hindi and Tamil originals to devotional bhajans and instrumental fusion, plus covers — and on the screen side, score and sound design for trailers, commercials and game media.",
+      "I work the same way on every project, whether it is a single voice and a guitar or a full arrangement: get the source right, protect the emotion of the take, and make the record translate on the devices people actually listen on."
+    ],
+    "philosophy": "Serve the song, not the session.",
+    "facts": [
+      {
+        "label": "Based in",
+        "value": "Dubai, UAE"
+      },
+      {
+        "label": "Trained at",
+        "value": "SAE Institute Dubai"
+      },
+      {
+        "label": "Vocal",
+        "value": "Hindustani classical, 10+ years"
+      },
+      {
+        "label": "Guitar",
+        "value": "Trinity College London"
+      },
+      {
+        "label": "Languages of work",
+        "value": "Hindi, Tamil, English"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "org": "Amaeya Media",
+      "role": "Production Intern",
+      "from": "May 2019",
+      "to": "November 2020",
+      "note": ""
+    },
+    {
+      "org": "Techniline Electronics LLC",
+      "role": "E-Commerce Intern",
+      "from": "January 2021",
+      "to": "April 2021",
+      "note": ""
+    },
+    {
+      "org": "Urband Entertainment",
+      "role": "Studio Assistant (Intern)",
+      "from": "June 2021",
+      "to": "August 2021",
+      "note": ""
+    },
+    {
+      "org": "The Kreative Company Events",
+      "role": "Sound Engineering Intern",
+      "from": "August 2021",
+      "to": "July 2022",
+      "note": ""
+    },
+    {
+      "org": "Aadi Shakti Music and Dance Center",
+      "role": "Hindustani Classical Teacher",
+      "from": "August 2021",
+      "to": "July 2022",
+      "note": ""
+    }
+  ],
+  "education": [
+    {
+      "org": "SAE Institute, Dubai",
+      "award": "Bachelors of Audio",
+      "from": "2018",
+      "to": "2021"
+    },
+    {
+      "org": "KM College of Music and Technology, Chennai",
+      "award": "Electronic Music Production",
+      "from": "2022",
+      "to": "2023"
+    },
+    {
+      "org": "Prayag Sangeet Samiti",
+      "award": "Bachelors of Indian Classical Music (Vocal)",
+      "from": "2012",
+      "to": "2022"
+    },
+    {
+      "org": "Trinity College London",
+      "award": "Western Classical Guitar — Grade 4 complete",
+      "from": "2016",
+      "to": "2022"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Audio Production",
+      "detail": "Arrangement, programming and recording from demo to master."
+    },
+    {
+      "name": "Mixing & Mastering",
+      "detail": "Balance, tone and loudness that translate across playback systems."
+    },
+    {
+      "name": "Audio Software",
+      "detail": "DAW-fluent across session setup, editing, comping and delivery."
+    },
+    {
+      "name": "Audio Equipment",
+      "detail": "Microphones, preamps, monitoring and live signal chains."
+    },
+    {
+      "name": "Photo & Video Editing",
+      "detail": "Cutting picture and stills to support a release."
+    },
+    {
+      "name": "MS Office",
+      "detail": "Session documentation, budgets and delivery paperwork."
+    }
+  ],
+  "softSkills": [
+    "Inclination towards good sound and music",
+    "Working in group environments",
+    "Team player"
+  ],
+  "workFilters": {
+    "kinds": [
+      {
+        "id": "original",
+        "label": "Originals"
+      },
+      {
+        "id": "cover",
+        "label": "Covers"
+      },
+      {
+        "id": "screen",
+        "label": "Screen & Sound Design"
+      }
+    ],
+    "collections": [
+      {
+        "id": "hindi",
+        "label": "Hindi"
+      },
+      {
+        "id": "tamil",
+        "label": "Tamil"
+      },
+      {
+        "id": "bhajan",
+        "label": "Bhajan"
+      },
+      {
+        "id": "instrumental",
+        "label": "Instrumental"
+      },
+      {
+        "id": "media",
+        "label": "Film, Games & Ads"
+      }
+    ]
+  },
+  "works": [
+    {
+      "slug": "noor-e-raazdaar",
+      "title": "Noor-E-Raazdaar",
+      "kind": "original",
+      "collection": "hindi",
+      "artStyle": "raga",
+      "with": "Shraddha Agrahari",
+      "roles": [
+        "Music Producer"
+      ],
+      "summary": "An original Hindi release produced with vocalist Shraddha Agrahari.",
+      "featured": true,
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://www.youtube.com/watch?v=mzcH3SEscZw",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "tere-bin-main-adhoora",
+      "title": "Tere Bin Main Adhoora",
+      "kind": "original",
+      "collection": "hindi",
+      "artStyle": "raga",
+      "roles": [
+        "Composer",
+        "Vocalist",
+        "Producer"
+      ],
+      "summary": "Written, sung and produced start to finish — the clearest single statement of how I hear a song.",
+      "featured": true,
+      "links": [
+        {
+          "label": "All listening links",
+          "url": "https://linktr.ee/terebinmainadhoora",
+          "type": "linktree"
+        }
+      ]
+    },
+    {
+      "slug": "octaves",
+      "title": "Octaves",
+      "kind": "original",
+      "collection": "bhajan",
+      "artStyle": "mandala",
+      "roles": [
+        "Producer",
+        "Vocalist"
+      ],
+      "summary": "A collection of original bhajans — devotional writing carried by classical vocal technique.",
+      "featured": true,
+      "links": [
+        {
+          "label": "All listening links",
+          "url": "https://linktr.ee/octavesthespiritofsoulfulmusic",
+          "type": "linktree"
+        }
+      ]
+    },
+    {
+      "slug": "pentatonic",
+      "title": "Pentatonic",
+      "kind": "original",
+      "collection": "instrumental",
+      "artStyle": "spectrum",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "Indian classical fusion, instrumental — pentatonic material treated with a producer's ear rather than a purist's.",
+      "featured": true,
+      "links": [
+        {
+          "label": "Listen on SoundCloud",
+          "url": "https://on.soundcloud.com/MXdf4Ddaxny339EZ6",
+          "type": "soundcloud"
+        }
+      ]
+    },
+    {
+      "slug": "delicate",
+      "title": "Delicate",
+      "kind": "original",
+      "collection": "instrumental",
+      "artStyle": "spectrum",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "An instrumental piece built around restraint — space deliberately left unfilled.",
+      "links": [
+        {
+          "label": "Listen on SoundCloud",
+          "url": "https://on.soundcloud.com/EMgrcVpMd3HixYbf8",
+          "type": "soundcloud"
+        }
+      ]
+    },
+    {
+      "slug": "teri-chahat-ki",
+      "title": "Teri Chahat Ki",
+      "kind": "original",
+      "collection": "instrumental",
+      "artStyle": "spectrum",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "An instrumental original, written and produced as a study in melody over arrangement.",
+      "links": [
+        {
+          "label": "Listen on SoundCloud",
+          "url": "https://on.soundcloud.com/YcWbtDy1t16hv7b28",
+          "type": "soundcloud"
+        }
+      ]
+    },
+    {
+      "slug": "nadhi",
+      "title": "Nadhi",
+      "subtitle": "Love For Nature",
+      "kind": "original",
+      "collection": "tamil",
+      "artStyle": "contour",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "First of a five-song Tamil cycle, each written around a different kind of love. This one is for the natural world.",
+      "featured": true,
+      "series": "Love, in five forms",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/O7kSx_Rhttw",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "pesum-pol",
+      "title": "Pesum Pol",
+      "subtitle": "Love After Death",
+      "kind": "original",
+      "collection": "tamil",
+      "artStyle": "contour",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "Love that outlasts the person — the second song in the Tamil cycle.",
+      "series": "Love, in five forms",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/vmNJ4Y73Pao",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "kalgal-odi-va",
+      "title": "Kalgal Odi Va",
+      "subtitle": "Love For Aged People",
+      "kind": "original",
+      "collection": "tamil",
+      "artStyle": "contour",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "Written for the elderly — the third song in the Tamil cycle.",
+      "series": "Love, in five forms",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/9D70skDHLso",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "kaalam-thorum",
+      "title": "Kaalam Thorum",
+      "subtitle": "Love For Animals",
+      "kind": "original",
+      "collection": "tamil",
+      "artStyle": "contour",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "Love for animals — the fourth song in the Tamil cycle.",
+      "series": "Love, in five forms",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://www.youtube.com/watch?v=LujQWTg1Wlg",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "mannin-adayalame",
+      "title": "Mannin Adayalame",
+      "subtitle": "Love For Country",
+      "kind": "original",
+      "collection": "tamil",
+      "artStyle": "contour",
+      "roles": [
+        "Composer",
+        "Producer"
+      ],
+      "summary": "Love of country — the song that closes the Tamil cycle.",
+      "series": "Love, in five forms",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://www.youtube.com/watch?v=zwUzVuaFxvU",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "ganesh-aarti",
+      "title": "Ganesh Aarti",
+      "kind": "cover",
+      "collection": "bhajan",
+      "artStyle": "mandala",
+      "roles": [
+        "Vocalist",
+        "Producer",
+        "Mix"
+      ],
+      "summary": "A devotional cover, sung in classical idiom and produced and mixed in-house.",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/bXk2UHskQtw",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "enna-sona",
+      "title": "Enna Sona",
+      "kind": "cover",
+      "collection": "hindi",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist",
+        "Producer",
+        "Mix"
+      ],
+      "summary": "A cover of the Hindi ballad, re-arranged and sung, with the production and mix done in-house.",
+      "links": [
+        {
+          "label": "Listen on SoundCloud",
+          "url": "https://on.soundcloud.com/ewJvxZmqK6mQ7pac8",
+          "type": "soundcloud"
+        }
+      ]
+    },
+    {
+      "slug": "phir-se-udd-chala",
+      "title": "Phir Se Udd Chala",
+      "kind": "cover",
+      "collection": "hindi",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist",
+        "Producer",
+        "Mix"
+      ],
+      "summary": "A cover taken at its own pace — vocal, arrangement and mix handled end to end.",
+      "links": [
+        {
+          "label": "Listen on SoundCloud",
+          "url": "https://on.soundcloud.com/XRN9VWkapRzxrkgt8",
+          "type": "soundcloud"
+        }
+      ]
+    },
+    {
+      "slug": "saathiya",
+      "title": "Saathiya",
+      "kind": "cover",
+      "collection": "hindi",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist"
+      ],
+      "summary": "A short-form vocal cover, recorded and released on Instagram.",
+      "links": [
+        {
+          "label": "Watch on Instagram",
+          "url": "https://www.instagram.com/p/Cta_ofBAV_5/",
+          "type": "instagram"
+        }
+      ]
+    },
+    {
+      "slug": "nindiya",
+      "title": "Nindiya",
+      "kind": "cover",
+      "collection": "hindi",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist"
+      ],
+      "summary": "A short-form vocal cover, recorded and released on Instagram.",
+      "links": [
+        {
+          "label": "Watch on Instagram",
+          "url": "https://www.instagram.com/p/CtKSxZKA3j4/",
+          "type": "instagram"
+        }
+      ]
+    },
+    {
+      "slug": "nila-kaigirathu",
+      "title": "Nila Kaigirathu",
+      "kind": "cover",
+      "collection": "tamil",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist",
+        "Producer",
+        "Mix"
+      ],
+      "summary": "A Tamil cover — vocal, production and mix, keeping the melody's original restraint.",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/X_YRCOr2-Nc",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "dil-hoom-hoom-kare",
+      "title": "Dil Hoom Hoom Kare",
+      "kind": "cover",
+      "collection": "hindi",
+      "artStyle": "groove",
+      "roles": [
+        "Vocalist",
+        "Producer",
+        "Mix"
+      ],
+      "summary": "A cover of the Bhupen Hazarika composition, sung with classical phrasing and produced from scratch.",
+      "links": [
+        {
+          "label": "Watch on YouTube",
+          "url": "https://youtu.be/EbZpSKkRk18",
+          "type": "youtube"
+        }
+      ]
+    },
+    {
+      "slug": "the-dark-tower-trailer",
+      "title": "The Dark Tower",
+      "subtitle": "Trailer score",
+      "kind": "screen",
+      "collection": "media",
+      "artStyle": "frames",
+      "roles": [
+        "Composer",
+        "Sound Design"
+      ],
+      "discipline": "Music for trailers",
+      "summary": "Original music written to picture for a film trailer.",
+      "featured": true,
+      "rightsNote": "NEEDS-CONFIRMATION: describe this as a re-score / student exercise or as commissioned work, whichever is accurate. See HANDOVER.md.",
+      "links": []
+    },
+    {
+      "slug": "the-dark-tower-scene",
+      "title": "The Dark Tower",
+      "subtitle": "Scene score",
+      "kind": "screen",
+      "collection": "media",
+      "artStyle": "frames",
+      "roles": [
+        "Composer",
+        "Sound Design"
+      ],
+      "discipline": "Music for film",
+      "summary": "Original music written to picture for a dramatic scene.",
+      "rightsNote": "NEEDS-CONFIRMATION: describe this as a re-score / student exercise or as commissioned work, whichever is accurate.",
+      "links": []
+    },
+    {
+      "slug": "du-advertisement",
+      "title": "du",
+      "subtitle": "Advertisement",
+      "kind": "screen",
+      "collection": "media",
+      "artStyle": "frames",
+      "roles": [
+        "Composer",
+        "Sound Design"
+      ],
+      "discipline": "Music and sound design for commercials",
+      "summary": "Music and sound design for a telecom brand commercial.",
+      "featured": true,
+      "rightsNote": "NEEDS-CONFIRMATION: commissioned or spec/portfolio work?",
+      "links": []
+    },
+    {
+      "slug": "street-fighter-v4",
+      "title": "Street Fighter V4",
+      "subtitle": "Advertisement",
+      "kind": "screen",
+      "collection": "media",
+      "artStyle": "frames",
+      "roles": [
+        "Composer"
+      ],
+      "discipline": "Music for commercials",
+      "summary": "Original music written to a game advertisement.",
+      "rightsNote": "NEEDS-CONFIRMATION: commissioned or spec/portfolio work?",
+      "links": []
+    },
+    {
+      "slug": "dragon-ball-z-game-trailer",
+      "title": "Dragon Ball Z",
+      "subtitle": "Game trailer",
+      "kind": "screen",
+      "collection": "media",
+      "artStyle": "frames",
+      "roles": [
+        "Composer",
+        "Sound Design"
+      ],
+      "discipline": "Music and sound design for games",
+      "summary": "Music and sound design written to a game trailer.",
+      "featured": true,
+      "rightsNote": "NEEDS-CONFIRMATION: commissioned or spec/portfolio work?",
+      "links": []
+    }
+  ],
+  "services": {
+    "enabled": true,
+    "intro": "Clear scopes, clear turnarounds. Prices are placeholders until you set them — nothing is published until you do.",
+    "currency": "AED",
+    "items": [
+      {
+        "name": "Mixing",
+        "price": "NEEDS-CONFIRMATION",
+        "unit": "per song",
+        "turnaround": "5–7 days",
+        "popular": true,
+        "blurb": "Your recorded parts turned into a finished, balanced record.",
+        "includes": [
+          "Full mix from your stems",
+          "Two rounds of revisions included",
+          "Stems delivered on request",
+          "Mix reference call before delivery"
+        ]
+      },
+      {
+        "name": "Mastering",
+        "price": "NEEDS-CONFIRMATION",
+        "unit": "per song",
+        "turnaround": "2–3 days",
+        "blurb": "Final tone and loudness, delivered ready for streaming platforms.",
+        "includes": [
+          "Streaming-ready master",
+          "Platform-specific versions",
+          "One revision included",
+          "Reference-matched loudness"
+        ]
+      },
+      {
+        "name": "Production",
+        "price": "NEEDS-CONFIRMATION",
+        "unit": "per song",
+        "turnaround": "By agreement",
+        "blurb": "From a voice note to a finished arrangement — writing, programming, recording and mix.",
+        "includes": [
+          "Arrangement and programming",
+          "Session musicians coordinated",
+          "Vocal production and comping",
+          "Mix and master included"
+        ]
+      },
+      {
+        "name": "Score & Sound Design",
+        "price": "NEEDS-CONFIRMATION",
+        "unit": "per project",
+        "turnaround": "By agreement",
+        "blurb": "Original music and sound to picture — trailers, commercials, games and film.",
+        "includes": [
+          "Music written to your cut",
+          "Sound design and foley",
+          "Stems and mix delivered to spec",
+          "Revisions to picture changes"
+        ]
+      },
+      {
+        "name": "Hindustani Vocal Tuition",
+        "price": "NEEDS-CONFIRMATION",
+        "unit": "per hour",
+        "turnaround": "Weekly slots",
+        "blurb": "Classical vocal training, from beginner to exam preparation.",
+        "includes": [
+          "One-to-one or small group",
+          "Structured to exam syllabus",
+          "Online or in person",
+          "Practice recordings provided"
+        ]
+      }
+    ]
+  },
+  "process": [
+    {
+      "title": "Talk first",
+      "body": "A short call about the song, the reference tracks you love, and what you want a listener to feel. No brief, no start."
+    },
+    {
+      "title": "Get the source right",
+      "body": "Most mix problems are recording problems. If we are tracking, we fix them at the microphone rather than at the plugin."
+    },
+    {
+      "title": "Build the balance",
+      "body": "Arrangement before EQ. If two parts are fighting for the same range, one of them moves."
+    },
+    {
+      "title": "Reference and revise",
+      "body": "You hear it against the tracks you chose, on the systems you actually use. Two rounds of revisions come as standard."
+    },
+    {
+      "title": "Deliver properly",
+      "body": "Master, platform versions, stems and documentation — everything you need to release without coming back to ask."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What do you need from me to start a mix?",
+      "a": "Stems exported from the top of the session at the same sample rate, with no master-bus processing, plus two or three reference tracks and any rough mix you have been living with."
+    },
+    {
+      "q": "How many revisions are included?",
+      "a": "Two rounds on mixing and production, one on mastering. Beyond that we agree a rate before any further work."
+    },
+    {
+      "q": "Do you work remotely?",
+      "a": "Yes. Most work is remote — files in, files back, with a call at the reference stage."
+    },
+    {
+      "q": "Which languages do you work in?",
+      "a": "Hindi, Tamil and English. Classical vocal training means I can follow and direct a take in Hindustani idiom as well as pop phrasing."
+    },
+    {
+      "q": "Can you write to picture?",
+      "a": "Yes — trailers, commercials, games and film scenes, delivered as stems to your spec."
+    }
+  ],
+  "testimonials": [],
+  "social": [
+    {
+      "label": "YouTube",
+      "url": "NEEDS-CONFIRMATION",
+      "icon": "youtube"
+    },
+    {
+      "label": "SoundCloud",
+      "url": "NEEDS-CONFIRMATION",
+      "icon": "soundcloud"
+    },
+    {
+      "label": "Instagram",
+      "url": "NEEDS-CONFIRMATION",
+      "icon": "instagram"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "NEEDS-CONFIRMATION",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Facebook",
+      "url": "NEEDS-CONFIRMATION",
+      "icon": "facebook"
+    },
+    {
+      "label": "Linktree",
+      "url": "https://linktr.ee/abhishekvenkat03",
+      "icon": "link"
+    }
+  ],
+  "contact": {
+    "email": "abhi.vs2000@gmail.com",
+    "formEndpoint": "",
+    "note": "Tell me about the song, when you need it, and send a reference track or two. I reply within two working days.",
+    "responseTime": "Within 2 working days",
+    "phones": [
+      {
+        "label": "Dubai",
+        "number": "+971 56 724 3945"
+      },
+      {
+        "label": "India",
+        "number": "+91 98207 42125"
+      }
+    ],
+    "_privacyNote": "The old Wix contact page also published a full home address and a date of birth. Both are deliberately left off this site: together they are the raw material for identity theft, and a residential address adds a personal-safety exposure that wins no work. Clients need a city and a way to reach you. Add them back only as a deliberate choice."
+  },
+  "demoAudio": {
+    "enabled": true,
+    "note": "These are synthesised demonstration files shipped with the site so the player and the A/B comparison work out of the box. Replace them with real excerpts — see HANDOVER.md, 'Adding your own audio'.",
+    "isPlaceholder": true
+  },
+  "_placeholder": true,
+  "player": {
+    "_note": "The tracks in the player at the bottom of every page. While isDemo is true the site labels them as demonstration audio, because they are synthesised placeholders rather than real recordings. Replace src with your own excerpt (MP3, 30-60 seconds is ideal), set isDemo to false, and the label disappears.",
+    "queue": [
+      {
+        "title": "Fusion cue",
+        "subtitle": "Instrumental — demonstration audio",
+        "src": "/audio/reel-01.mp3",
+        "isDemo": true
+      },
+      {
+        "title": "Devotional cue",
+        "subtitle": "Voice-led — demonstration audio",
+        "src": "/audio/reel-02.mp3",
+        "isDemo": true
+      },
+      {
+        "title": "Screen cue",
+        "subtitle": "Score to picture — demonstration audio",
+        "src": "/audio/reel-03.mp3",
+        "isDemo": true
+      }
+    ]
+  },
+  "compare": {
+    "_note": "The before/after control. 'raw' should be a rough bounce and 'mixed' the finished version OF THE SAME PERFORMANCE. Both files are played at a matched loudness so a listener is comparing the mix and not the volume.",
+    "enabled": true,
+    "title": "The same take, two chains",
+    "blurb": "A mix is not a volume control. Switch between the rough bounce and the finished version — both play at the same loudness, so what you hear is the balance, the tone and the space, not one being turned up.",
+    "isDemo": true,
+    "raw": {
+      "label": "Rough bounce",
+      "src": "/audio/demo-raw.mp3"
+    },
+    "mixed": {
+      "label": "Finished mix",
+      "src": "/audio/demo-mixed.mp3"
+    }
+  }
+}

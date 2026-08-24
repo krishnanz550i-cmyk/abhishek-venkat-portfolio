@@ -1,0 +1,71 @@
+# Publishes the website to GitHub Pages.
+#
+# Every time the content file changes, this rebuilds the site and puts it live,
+# usually within two minutes. Nobody has to run anything.
+#
+# If the content file has a mistake in it, this stops and the site already
+# online stays exactly as it is. Nothing is ever half-published.
+
+name: Publish website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:          # republish by hand from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Turns Pages on the first time this runs, and tells the build which
+      # sub-path the site will be served from. A project site lives at
+      # /repo-name/, not at the domain root, and the build has to know: every
+      # link and image path is written relative to it.
+      - id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install
+        working-directory: site
+        run: npm ci --omit=dev --omit=optional
+
+      - name: Check the content, then build
+        working-directory: site
+        env:
+          SITE_BASE: ${{ steps.pages.outputs.base_path }}/
+        # Once everything in CONTENT-NEEDED.md is filled in, delete the
+        # "ALLOW_PLACEHOLDER=1 " below. The checks then become strict, and an
+        # unfinished detail can no longer reach a published page.
+        run: ALLOW_PLACEHOLDER=1 npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

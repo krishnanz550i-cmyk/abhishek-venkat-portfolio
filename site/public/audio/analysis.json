@@ -1,0 +1,62 @@
+{
+  "demo-mixed.mp3": {
+    "peak_db": -1.26,
+    "rms_db": -17.11,
+    "crest_db": 15.86,
+    "stereo_correlation": 0.928,
+    "spectral_centroid_hz": 3174,
+    "energy_above_6k_pct": 20.32,
+    "energy_200_500_pct": 16.72,
+    "clipped_samples": 0,
+    "has_nan": false,
+    "seconds": 20.0
+  },
+  "demo-raw.mp3": {
+    "peak_db": -1.57,
+    "rms_db": -15.24,
+    "crest_db": 13.68,
+    "stereo_correlation": 1.0,
+    "spectral_centroid_hz": 1076,
+    "energy_above_6k_pct": 4.79,
+    "energy_200_500_pct": 23.0,
+    "clipped_samples": 0,
+    "has_nan": false,
+    "seconds": 20.0
+  },
+  "reel-01.mp3": {
+    "peak_db": -0.66,
+    "rms_db": -16.79,
+    "crest_db": 16.13,
+    "stereo_correlation": 0.928,
+    "spectral_centroid_hz": 3035,
+    "energy_above_6k_pct": 19.49,
+    "energy_200_500_pct": 16.89,
+    "clipped_samples": 0,
+    "has_nan": false,
+    "seconds": 20.0
+  },
+  "reel-02.mp3": {
+    "peak_db": -1.21,
+    "rms_db": -15.85,
+    "crest_db": 14.64,
+    "stereo_correlation": 0.943,
+    "spectral_centroid_hz": 2316,
+    "energy_above_6k_pct": 13.4,
+    "energy_200_500_pct": 21.41,
+    "clipped_samples": 0,
+    "has_nan": false,
+    "seconds": 22.5
+  },
+  "reel-03.mp3": {
+    "peak_db": -0.82,
+    "rms_db": -16.72,
+    "crest_db": 15.9,
+    "stereo_correlation": 0.978,
+    "spectral_centroid_hz": 478,
+    "energy_above_6k_pct": 1.19,
+    "energy_200_500_pct": 29.59,
+    "clipped_samples": 0,
+    "has_nan": false,
+    "seconds": 23.1
+  }
+}

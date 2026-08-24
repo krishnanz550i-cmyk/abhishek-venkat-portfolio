@@ -1,0 +1,107 @@
+---
+/**
+ * Base.astro — the shell every page sits inside.
+ *
+ * It owns three things pages should never have to think about:
+ *  1. everything in <head> that decides how the page looks in Google and when
+ *     someone pastes the link into WhatsApp or Instagram;
+ *  2. the navigation, footer and the audio player docked at the bottom;
+ *  3. the cross-page transition, which is what lets a track keep playing while
+ *     the visitor moves from one page to another.
+ */
+import { meta, identity, abs, url, personSchema } from '../lib/content.js';
+import { ClientRouter } from 'astro:transitions';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Player from '../components/Player.astro';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+
+const {
+  title,
+  description = meta.description,
+  image = url('/art/og.png'),
+  path = Astro.url.pathname,
+  schema = null,
+  wide = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${identity.name}` : meta.title;
+const canonical = abs(path);
+const schemas = [personSchema(), ...(schema ? [schema].flat() : [])];
+---
+<!doctype html>
+<html lang={meta.locale} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content={meta.themeColor} />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- How the link looks when it is shared. A portfolio lives or dies by
+         whether this card looks right in a DM. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={identity.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(image)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={abs(image)} />
+
+    <!-- Fonts are on this server, so there is no third-party request to wait
+         for and no visitor data sent anywhere else. -->
+    <link rel="preload" href={url("/fonts/archivo-latin-var.woff2")} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={url("/fonts/inter-latin-var.woff2")} as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href={url("/favicon.svg")} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={url("/art/og.png")} />
+    <link rel="sitemap" href={url("/sitemap.xml")} />
+
+    <!-- Tell the browser JavaScript is running BEFORE first paint, so
+         scroll-reveal elements start hidden instead of flashing into place.
+         If this never runs, everything stays visible: the site works with
+         JavaScript switched off. -->
+    <script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
+
+    {schemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+
+    <ClientRouter />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <Nav />
+
+    <main id="main" class={wide ? 'is-wide' : ''}>
+      <slot />
+    </main>
+
+    <Footer />
+    <Player />
+
+    <script>
+      // Behaviour is split by concern; each module re-binds itself on every
+      // page change, because view transitions swap the page without a reload.
+      import '../scripts/reveal.js';
+      import '../scripts/nav.js';
+      import '../scripts/player.js';
+      import '../scripts/ab.js';
+      import '../scripts/filters.js';
+      import '../scripts/pointer.js';
+      import '../scripts/hero.js';
+      import '../scripts/contact.js';
+    </script>
+  </body>
+</html>

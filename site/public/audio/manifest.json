@@ -1,0 +1,24 @@
+{
+  "generated": "synthesised, royalty-free",
+  "abPair": {
+    "rawLoudnessDb": -4.7,
+    "mixedLoudnessDb": -19.8,
+    "loudnessDifferenceDb": -15.1,
+    "levelMatched": true,
+    "note": "Both versions are played back at the same loudness so the comparison is of the mix, not the volume."
+  },
+  "reels": [
+    {
+      "id": "reel-01",
+      "seconds": 20.0
+    },
+    {
+      "id": "reel-02",
+      "seconds": 22.5
+    },
+    {
+      "id": "reel-03",
+      "seconds": 23.1
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Faq from '../components/Faq.astro';
+import { services, process, faq, clean, identity, breadcrumbSchema, url } from '../lib/content.js';
+
+const schema = [
+  breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'Services', href: '/services' }]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question', name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+<Base title="Services" description={`Mixing, mastering, production, score and sound design by ${identity.name}. Clear scopes and turnarounds.`} schema={schema}>
+  <section class="section" style="padding-top:9rem">
+    <div class="wrap">
+      <p class="tag tag--signal">Services</p>
+      <h1 class="display" style="margin:1rem 0 2rem">Scopes<br />&amp; turnaround</h1>
+      <p class="lead prose">{services.intro}</p>
+
+      <div class="svc-grid" style="margin-top:3.5rem" data-reveal="stagger">
+        {services.items.map((s) => {
+          const price = clean(s.price);
+          return (
+            <div class:list={['svc', 'card', { 'is-popular': s.popular }]}>
+              {s.popular && <span class="chip chip--signal svc__flag">Most asked for</span>}
+              <div>
+                <h2 class="svc__name">{s.name}</h2>
+                <p class="svc__blurb" style="margin-top:.5rem">{s.blurb}</p>
+              </div>
+              <p class:list={['svc__price', { 'svc__price--tbc': !price }]}>
+                {price ? `${services.currency} ${price}` : 'On enquiry'}
+                <small>{s.unit} · {s.turnaround}</small>
+              </p>
+              <ul class="svc__list">
+                {s.includes.map((i) => (
+                  <li><span class="svc__tick" aria-hidden="true">✓</span><span>{i}</span></li>
+                ))}
+              </ul>
+              <a class="btn" href={url(`/contact?service=${encodeURIComponent(s.name)}`)}>Enquire</a>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <SectionHead num="01" title="How a project runs" />
+      <ol class="steps" data-reveal="stagger">
+        {process.map((p) => (
+          <li class="step">
+            <span class="step__n"></span>
+            <div>
+              <h3 class="step__title">{p.title}</h3>
+              <p class="step__body">{p.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <SectionHead num="02" title="Questions people ask" />
+      <Faq items={faq} />
+    </div>
+  </section>
+</Base>

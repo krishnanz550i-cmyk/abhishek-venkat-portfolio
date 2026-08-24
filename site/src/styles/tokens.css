@@ -1,0 +1,80 @@
+/* =============================================================================
+   DESIGN TOKENS — the single place colour, type and spacing are decided.
+   Change a value here and it changes everywhere on the site, consistently.
+   -----------------------------------------------------------------------------
+   Palette logic: a near-black studio room, one signal colour (amber-orange, the
+   colour of a console's peak LED), and authentic meter colours (green/amber/red)
+   used ONLY for level meters, because that is what those colours mean to anyone
+   who has stood in front of a desk.
+   ========================================================================== */
+
+:root {
+  /* --- Surfaces: darkest at the back, lifting toward the viewer ------------ */
+  --ink:        #08080A;   /* page background */
+  --ink-2:      #0C0C10;   /* alternating band */
+  --panel:      #111116;   /* cards, player */
+  --panel-2:    #17171D;   /* raised element inside a card */
+  --line:       rgba(255,255,255,.09);
+  --line-2:     rgba(255,255,255,.16);
+
+  /* --- Text ---------------------------------------------------------------
+     Every one of these is verified against every surface by
+     scripts/check-contrast.mjs, which runs before the build. Change a value
+     here and the build tells you if it has become unreadable. */
+  --text:       #F5F5F7;
+  --text-2:     #B4B4BF;
+  --text-3:     #84848F;
+
+  /* --- Brand signal ------------------------------------------------------- */
+  --signal:     #FF5A1F;   /* peak-LED amber-orange */
+  --signal-lo:  #FF8A5C;   /* the tint to use when the accent is running TEXT */
+  --signal-dim: rgba(255,90,31,.14);
+
+  /* --- Meter semantics (level meters only, never decoration) --------------- */
+  --meter-ok:   #3BE08A;
+  --meter-warn: #FFB020;
+  --meter-peak: #FF3B30;
+
+  /* --- Type -------------------------------------------------------------- */
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Fluid type scale: min size at 380px viewport, max at 1440px.
+     clamp() means it scales smoothly instead of jumping at breakpoints. */
+  /* Scales with width, but never taller than the viewport can hold:
+     min(13vw, 17svh) is what stops a three-line headline being clipped
+     on a laptop screen. */
+  --t-hero:  clamp(3.2rem, min(13vw, 17svh), 12rem);
+  --t-xxl:   clamp(2.6rem, 7vw,  6rem);
+  --t-xl:    clamp(2rem,   4.4vw, 3.5rem);
+  --t-lg:    clamp(1.5rem, 2.6vw, 2.125rem);
+  --t-md:    clamp(1.0625rem, 1.15vw, 1.1875rem);
+  --t-sm:    0.9375rem;
+  --t-xs:    0.8125rem;
+  --t-mono:  0.75rem;
+
+  /* --- Space: a 4px-based rhythm ------------------------------------------ */
+  --s-1: .25rem;  --s-2: .5rem;   --s-3: .75rem;  --s-4: 1rem;
+  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;
+  --s-9: 6rem;    --s-10: 8rem;   --s-11: 12rem;
+
+  --gutter: clamp(1.25rem, 5vw, 5rem);
+  --maxw: 1440px;
+  --maxw-text: 68ch;
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease-out: cubic-bezier(.16, 1, .3, 1);       /* decelerating, feels "arrived" */
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --dur-1: 160ms; --dur-2: 320ms; --dur-3: 640ms; --dur-4: 1100ms;
+
+  --radius: 4px;        /* hardware-panel square-ish, not bubbly */
+  --radius-lg: 10px;
+
+  --player-h: 84px;     /* height the docked player reserves at the bottom */
+  --shadow: 0 24px 60px -20px rgba(0,0,0,.85);
+}
+
+/* Light mode is deliberately NOT offered: this is a studio-dark brand, and a
+   half-hearted light theme would look worse than none. Documented for the owner
+   in HANDOVER.md so it reads as a decision, not an omission. */
