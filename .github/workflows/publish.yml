@@ -28,10 +28,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Turns Pages on the first time this runs, and tells the build which
-      # sub-path the site will be served from. A project site lives at
-      # /repo-name/, not at the domain root, and the build has to know: every
-      # link and image path is written relative to it.
+      # Reads the Pages settings and tells the build which sub-path the site is
+      # served from. A project site lives at /repo-name/, not at the domain
+      # root, and the build has to know: every link and image path is written
+      # relative to it.
+      #
+      # This does NOT switch Pages on. GitHub refuses to create a Pages site
+      # from a workflow token, so the very first time a repository publishes,
+      # somebody has to set Settings -> Pages -> Source to "GitHub Actions" by
+      # hand. After that this step just reads what is already there.
       - id: pages
         uses: actions/configure-pages@v5
         with:
@@ -45,7 +50,7 @@ jobs:
 
       - name: Install
         working-directory: site
-        run: npm ci --omit=dev --omit=optional
+        run: npm ci --omit=dev
 
       - name: Check the content, then build
         working-directory: site

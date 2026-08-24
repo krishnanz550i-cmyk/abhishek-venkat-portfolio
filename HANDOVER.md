@@ -42,8 +42,10 @@ repository does it: every time you change your content, it rebuilds and
 republishes within about two minutes. You never run anything, and you never have
 to touch this again.
 
-If you are ever setting this up in a fresh repository, the whole procedure is:
-copy that one workflow file in, and push. It switches Pages on by itself.
+If you are ever setting this up in a fresh repository, it is two steps: copy
+that one workflow file in and push, then go to **Settings → Pages** and set
+**Source** to **GitHub Actions**. GitHub will not let a workflow switch Pages on
+for you, so that one click has to be done by a person, once.
 
 **Using your own web address** (for example `abhishekvenkat.com`): buy the name
 from any domain registrar, then go to **Settings → Pages** on GitHub and enter it
