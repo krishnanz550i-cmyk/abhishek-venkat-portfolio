@@ -38,3 +38,13 @@ Static Astro build: 29 pre-rendered pages, no server, no database, no runtime
 keys, nothing fetched from a third party at page load. Publishing is
 `.github/workflows/publish.yml`, which switches GitHub Pages on by itself the
 first time it runs.
+
+## Where this is going
+
+[`docs/music-repository.md`](docs/music-repository.md) — the plan for growing this
+from a portfolio into a searchable music repository, in stages, without breaking
+the site that is already live.
+
+[`.claude/agents/`](.claude/agents/) — six AI personas that do that work, each
+owning one part of it: the catalog schema, the audio pipeline, the machine
+listening, search, the frontend, and the rights and quality gate.
