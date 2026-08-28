@@ -18,7 +18,12 @@ function init() {
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = canvas.getContext('2d');
   const css = getComputedStyle(document.documentElement);
-  const SIGNAL = css.getPropertyValue('--signal').trim() || '#FF5A1F';
+  const read = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+  const SIGNAL = read('--signal', '#C1121F');
+  const GOLD = read('--gold', '#9A6B0F');
+  // The field is ink on paper, so the quiet lines are a transparent brown-black
+  // rather than a transparent white — white would simply disappear.
+  const INK_RGB = '64,28,10';
 
   let w = 0, h = 0, raf = 0, visible = true, t = 0;
 
@@ -66,9 +71,13 @@ function init() {
         x === 0 ? ctx.moveTo(x, yy) : ctx.lineTo(x, yy);
       }
       const near = 0.09 + centreness * 0.30 + energy * 0.34;
+      // Every seventh line is inked in red and every eleventh in gold, so the
+      // field reads as a two-colour print rather than a wash.
       ctx.strokeStyle = i % 7 === 3
-        ? `color-mix(in srgb, ${SIGNAL} ${Math.round(near * 100)}%, transparent)`
-        : `rgba(255,255,255,${(near * 0.62).toFixed(3)})`;
+        ? `color-mix(in srgb, ${SIGNAL} ${Math.round(near * 90)}%, transparent)`
+        : i % 11 === 5
+          ? `color-mix(in srgb, ${GOLD} ${Math.round(near * 85)}%, transparent)`
+          : `rgba(${INK_RGB},${(near * 0.42).toFixed(3)})`;
       ctx.lineWidth = 1 + centreness * 0.8;
       ctx.stroke();
     }

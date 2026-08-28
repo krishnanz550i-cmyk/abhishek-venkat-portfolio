@@ -219,7 +219,9 @@ previous version) and the site returns.
 
 Being explicit so these read as decisions, not oversights:
 
-- **No light mode.** The brand is a dark studio room. A half-committed light
+- **No dark mode.** The brand is a hand-painted Bombay film poster: ink on
+  cream paper, in sindoor red, marigold gold and peacock teal. Every colour on
+  the site assumes a light sheet underneath it, and a half-committed dark
   version would look worse than none.
 - **No cookie banner, no analytics, no tracking.** Nothing about your visitors is
   collected, so there is nothing to disclose and no banner to show. If you later

@@ -2,38 +2,61 @@
    DESIGN TOKENS — the single place colour, type and spacing are decided.
    Change a value here and it changes everywhere on the site, consistently.
    -----------------------------------------------------------------------------
-   Palette logic: a near-black studio room, one signal colour (amber-orange, the
-   colour of a console's peak LED), and authentic meter colours (green/amber/red)
-   used ONLY for level meters, because that is what those colours mean to anyone
-   who has stood in front of a desk.
+   Palette logic: a hand-painted Bombay film poster. The ground is aged poster
+   paper — warm cream, printed rather than screened. On top of it sit the four
+   inks a poster press actually ran: sindoor red, marigold gold, gulaal rose and
+   peacock teal. Nothing is neon, nothing glows; everything looks like pigment
+   sitting on paper, because that is the reference.
+
+   Meter colours (green/amber/red) stay separate and are used ONLY for level
+   meters, because that is what those colours mean to anyone who has stood in
+   front of a desk.
    ========================================================================== */
 
 :root {
-  /* --- Surfaces: darkest at the back, lifting toward the viewer ------------ */
-  --ink:        #08080A;   /* page background */
-  --ink-2:      #0C0C10;   /* alternating band */
-  --panel:      #111116;   /* cards, player */
-  --panel-2:    #17171D;   /* raised element inside a card */
-  --line:       rgba(255,255,255,.09);
-  --line-2:     rgba(255,255,255,.16);
+  /* --- Surfaces: aged paper, lightest where the eye should land ------------
+     Names are historical (--ink was the near-black of the old dark theme);
+     they now mean "the page ground" and every surface built on it. */
+  --ink:        #FCF6EA;   /* page background — poster paper */
+  --ink-2:      #F5E8D3;   /* alternating band — the same sheet, one tone down */
+  --panel:      #FFFDF7;   /* cards, player — fresh paper laid on top */
+  --panel-2:    #FBF0DC;   /* raised element inside a card */
+  --line:       rgba(64, 28, 10, .16);
+  --line-2:     rgba(64, 28, 10, .30);
 
   /* --- Text ---------------------------------------------------------------
      Every one of these is verified against every surface by
      scripts/check-contrast.mjs, which runs before the build. Change a value
      here and the build tells you if it has become unreadable. */
-  --text:       #F5F5F7;
-  --text-2:     #B4B4BF;
-  --text-3:     #84848F;
+  --text:       #2A1508;   /* poster ink — brown-black, never pure black */
+  --text-2:     #5B4126;
+  --text-3:     #6E5334;
 
   /* --- Brand signal ------------------------------------------------------- */
-  --signal:     #FF5A1F;   /* peak-LED amber-orange */
-  --signal-lo:  #FF8A5C;   /* the tint to use when the accent is running TEXT */
-  --signal-dim: rgba(255,90,31,.14);
+  --signal:     #C1121F;   /* sindoor red — the poster's headline ink */
+  --signal-lo:  #A4121C;   /* the deeper cut to use when the accent is running TEXT */
+  --signal-dim: rgba(193,18,31,.10);
+  --on-signal:  #FFF6E8;   /* paper-white, for text sitting ON the red */
+
+  /* --- Supporting poster inks --------------------------------------------- */
+  --gold:       #9A6B0F;   /* marigold, aged — rules, ornament, garlands */
+  --gold-lo:    rgba(154,107,15,.22);
+  --rose:       #A6185B;   /* gulaal — the second accent, used sparingly */
+  --teal:       #0E6E70;   /* peacock — the cool note that stops it going brown */
+
+  /* --- The credits block ---------------------------------------------------
+     One device on a Hindi film poster is printed the other way round: the slab
+     at the foot of the sheet carrying the credits, ink-filled with the type
+     knocked out of it. The footer, the marquee band and the player use it, so
+     the colours that sit on that ink are tokens too, and are checked. */
+  --on-ink:     #FFF6E8;   /* type knocked out of the ink slab */
+  --on-ink-2:   #D9C4A9;   /* the smaller credits line */
+  --gold-hi:    #E0B354;   /* gold bright enough to read on the ink slab */
 
   /* --- Meter semantics (level meters only, never decoration) --------------- */
-  --meter-ok:   #3BE08A;
-  --meter-warn: #FFB020;
-  --meter-peak: #FF3B30;
+  --meter-ok:   #1B7A46;
+  --meter-warn: #A96A00;
+  --meter-peak: #C1121F;
 
   /* --- Type -------------------------------------------------------------- */
   --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
@@ -68,13 +91,24 @@
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
   --dur-1: 160ms; --dur-2: 320ms; --dur-3: 640ms; --dur-4: 1100ms;
 
-  --radius: 4px;        /* hardware-panel square-ish, not bubbly */
-  --radius-lg: 10px;
+  --radius: 3px;        /* printed-panel square-ish, not bubbly */
+  --radius-lg: 8px;
 
   --player-h: 84px;     /* height the docked player reserves at the bottom */
-  --shadow: 0 24px 60px -20px rgba(0,0,0,.85);
+  --shadow: 0 18px 44px -22px rgba(74, 34, 12, .45);
+  --shadow-sm: 0 2px 0 0 rgba(64, 28, 10, .10);
+
+  /* --- Print texture -------------------------------------------------------
+     Two layers give the page the feel of ink on paper rather than pixels:
+     a fine paper tooth (--grain-url) laid over everything, and a halftone dot
+     screen (--halftone) used behind poster-style panels, the way a four-colour
+     press would have laid down a flat tint. Both are inline SVG/CSS: no file
+     to download, nothing fetched from anywhere else. */
+  --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  --halftone: radial-gradient(circle at center, rgba(193,18,31,.16) 1.1px, transparent 1.2px);
 }
 
-/* Light mode is deliberately NOT offered: this is a studio-dark brand, and a
-   half-hearted light theme would look worse than none. Documented for the owner
-   in HANDOVER.md so it reads as a decision, not an omission. */
+/* A dark theme is deliberately NOT offered: this is a poster-paper brand, and
+   the whole palette is built on the assumption that ink sits on a light sheet.
+   Documented for the owner in HANDOVER.md so it reads as a decision, not an
+   omission. */

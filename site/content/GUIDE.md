@@ -31,15 +31,15 @@ read one thing, read the rule at the bottom.
 
 | Field | What it does |
 |---|---|
-| `lines` | The big headline, one array item per line. **The second line is the orange one.** Three short lines works best; four gets cramped on a laptop. |
-| `kicker` | The small orange line above it. |
+| `lines` | The big headline, one array item per line. **The second line prints in red and the third in gold**, the way a poster title was set in two inks. Three short lines works best; four gets cramped on a laptop. |
+| `kicker` | The small red line above it. |
 | `intro` | The paragraph below. Keep it under about 45 words. |
 | `ctaPrimary` / `ctaSecondary` | The two buttons: `label` and `href`. |
 
 ## `about`
 
 `lead` is the large opening sentence. `paragraphs` is a list — each item becomes
-its own paragraph. `philosophy` is the pull-quote with the orange bar; delete it
+its own paragraph. `philosophy` is the pull-quote with the red bar; delete it
 and the quote disappears. `facts` is the "at a glance" table: each item is a
 `label` and a `value`.
 
@@ -90,7 +90,7 @@ than invented ones.
 ## `player` — the bar at the bottom
 
 `queue` is the list of tracks. Each has `title`, `subtitle`, `src` (a file in
-`public/audio/`), and `isDemo`. While `isDemo` is `true` an orange "demo audio"
+`public/audio/`), and `isDemo`. While `isDemo` is `true` an amber "demo audio"
 label is shown, so nobody mistakes a placeholder for your work.
 
 ## `compare` — the before/after control

@@ -14,11 +14,14 @@ const serviceNames = services.enabled ? services.items.map((s) => s.name) : [];
 <Base>
   <!-- ------------------------------------------------------------ HERO -- -->
   <section class="hero">
+    <!-- The sunburst a hand-painted poster puts behind its title, then the
+         audio-reactive field on top of it. -->
+    <span class="rays" aria-hidden="true"></span>
     <HeroCanvas />
     <div class="wrap hero__inner">
       <p class="tag tag--signal hero__kicker">{hero.kicker}</p>
 
-      <h1 class="display hero__title">
+      <h1 class="display display--poster hero__title">
         {hero.lines.map((line, i) => (
           <span class="hero__line"><span style={`--i:${i}`}>{line}</span></span>
         ))}
@@ -55,6 +58,8 @@ const serviceNames = services.enabled ? services.items.map((s) => s.name) : [];
     </div>
   </section>
 
+  <hr class="garland" aria-hidden="true" />
+
   <!-- ------------------------------------------------------------ APPROACH -->
   <section class="section band">
     <div class="wrap">
@@ -78,6 +83,8 @@ const serviceNames = services.enabled ? services.items.map((s) => s.name) : [];
       </div>
     </div>
   </section>
+
+  <hr class="garland" aria-hidden="true" />
 
   <!-- --------------------------------------------------------- BEFORE/AFTER -->
   <ABCompare />

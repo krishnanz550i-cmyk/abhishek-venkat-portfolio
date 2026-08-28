@@ -125,10 +125,10 @@ function init() {
 
   const css = getComputedStyle(document.documentElement);
   const COL = {
-    ok: css.getPropertyValue('--meter-ok').trim() || '#3BE08A',
-    warn: css.getPropertyValue('--meter-warn').trim() || '#FFB020',
-    peak: css.getPropertyValue('--meter-peak').trim() || '#FF3B30',
-    idle: 'rgba(255,255,255,.16)',
+    ok: css.getPropertyValue('--meter-ok').trim() || '#1B7A46',
+    warn: css.getPropertyValue('--meter-warn').trim() || '#A96A00',
+    peak: css.getPropertyValue('--meter-peak').trim() || '#C1121F',
+    idle: 'rgba(64,28,10,.22)',
   };
 
   function draw() {

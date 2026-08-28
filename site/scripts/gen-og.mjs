@@ -19,20 +19,29 @@ const { name, roles, location } = content.identity;
 const html = `<!doctype html><meta charset="utf-8"><style>
 @font-face { font-family:'Archivo'; src:url(data:font/woff2;base64,${font}) format('woff2-variations'); font-weight:100 900; font-stretch:62% 125%; }
 *{margin:0;box-sizing:border-box}
-body{width:1200px;height:630px;background:#08080A;color:#F5F5F7;font-family:Archivo,sans-serif;position:relative;overflow:hidden}
-.art{position:absolute;inset:0;opacity:.55}
-.art svg{width:100%;height:100%;object-fit:cover}
-.scrim{position:absolute;inset:0;background:linear-gradient(100deg,#08080A 30%,rgba(8,8,10,.66) 60%,rgba(8,8,10,.22))}
+body{width:1200px;height:630px;background:#FCF6EA;color:#2A1508;font-family:Archivo,sans-serif;position:relative;overflow:hidden}
+/* The sunburst behind a hand-painted poster title. */
+.rays{position:absolute;inset:0;background:repeating-conic-gradient(from -8deg at 8% 100%,rgba(154,107,15,.20) 0deg 3.2deg,transparent 3.2deg 9deg);
+  -webkit-mask-image:radial-gradient(95% 95% at 8% 100%,#000 12%,transparent 74%)}
+.art{position:absolute;right:0;top:-285px;width:1200px;height:1200px;opacity:.6;
+  -webkit-mask-image:linear-gradient(100deg,transparent 34%,#000 78%)}
+.art svg{width:100%;height:100%}
+.scrim{position:absolute;inset:0;background:linear-gradient(100deg,#FCF6EA 40%,rgba(252,246,234,.55) 62%,rgba(252,246,234,0))}
 .in{position:absolute;inset:0;padding:72px;display:flex;flex-direction:column;justify-content:space-between}
-.kick{font-size:21px;letter-spacing:.26em;text-transform:uppercase;color:#FF8A5C;font-weight:600}
-h1{font-size:88px;line-height:.92;font-weight:800;font-stretch:88%;letter-spacing:-.04em;text-transform:uppercase;max-width:16ch}
+.kick{font-size:21px;letter-spacing:.26em;text-transform:uppercase;color:#A4121C;font-weight:600}
+h1{font-size:88px;line-height:.92;font-weight:800;font-stretch:88%;letter-spacing:-.04em;text-transform:uppercase;max-width:16ch;
+  text-shadow:3px 4px 0 rgba(154,107,15,.22)}
 .roles{display:flex;gap:12px;flex-wrap:wrap}
-.role{border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:9px 20px;font-size:19px;letter-spacing:.1em;text-transform:uppercase;color:#B4B4BF}
+.role{border:1px solid rgba(64,28,10,.30);border-radius:999px;padding:9px 20px;font-size:19px;letter-spacing:.1em;text-transform:uppercase;color:#5B4126}
 .foot{display:flex;justify-content:space-between;align-items:flex-end}
-.loc{font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:#7C7C88}
-.bar{position:absolute;left:0;right:0;bottom:0;height:7px;background:linear-gradient(90deg,#FF5A1F,#FFB020 62%,#3BE08A)}
+.loc{font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:#6E5334}
+/* The marigold garland strung across the foot of the sheet. */
+.bar{position:absolute;left:0;right:0;bottom:0;height:18px;
+  background:radial-gradient(circle at 10px 9px,#9A6B0F 0 4px,transparent 4.5px) 0 0/20px 18px repeat-x,
+             radial-gradient(circle at 20px 9px,#C1121F 0 2.5px,transparent 3px) 0 0/20px 18px repeat-x,
+             #FCF6EA}
 </style>
-<div class="art">${art}</div><div class="scrim"></div>
+<div class="art">${art}</div><div class="scrim"></div><div class="rays"></div>
 <div class="in">
   <p class="kick">${roles.slice(0, 2).join(' · ')}</p>
   <div>

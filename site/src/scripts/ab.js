@@ -46,8 +46,10 @@ function setup(root) {
   /* --- Drawing ------------------------------------------------------------ */
   const ctx = canvas.getContext('2d');
   const css = getComputedStyle(document.documentElement);
-  const SIGNAL = css.getPropertyValue('--signal').trim() || '#FF5A1F';
-  const DIM = 'rgba(255,255,255,.20)';
+  const SIGNAL = css.getPropertyValue('--signal').trim() || '#C1121F';
+  // Bars are ink on paper: the inactive lane is a pale brown, not a pale white.
+  const PLAYED = 'rgba(64,28,10,.55)';
+  const DIM = 'rgba(64,28,10,.22)';
 
   function size() {
     const r = canvas.getBoundingClientRect();
@@ -77,14 +79,14 @@ function setup(root) {
         const v = lane.data[i];
         const bh = Math.max(1, v * maxH);
         const passed = x / w <= progress;
-        ctx.fillStyle = active ? (passed ? SIGNAL : 'rgba(255,255,255,.42)') : DIM;
+        ctx.fillStyle = active ? (passed ? SIGNAL : PLAYED) : DIM;
         ctx.globalAlpha = active ? 1 : 0.5;
         ctx.fillRect(x, lane.y - bh, bw, bh * 2);
       }
     }
     ctx.globalAlpha = 1;
     // Divider between the two lanes.
-    ctx.fillStyle = 'rgba(255,255,255,.08)';
+    ctx.fillStyle = 'rgba(64,28,10,.14)';
     ctx.fillRect(0, h / 2 - 0.5, w, 1);
   }
 

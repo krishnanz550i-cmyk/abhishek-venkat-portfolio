@@ -47,6 +47,9 @@ const RULES = [
   { fg: 'meter-ok', min: 3.0, role: 'meter indicator' },
   { fg: 'meter-warn', min: 3.0, role: 'meter indicator' },
   { fg: 'meter-peak', min: 3.0, role: 'meter indicator' },
+  { fg: 'gold', min: 3.0, role: 'ornament rules and garlands' },
+  { fg: 'rose', min: 4.5, role: 'second accent, used as text' },
+  { fg: 'teal', min: 4.5, role: 'third accent, used as text' },
 ];
 
 const failures = [];
@@ -64,10 +67,22 @@ for (const rule of RULES) {
   }
 }
 
-// Text sitting ON the accent (buttons) is the pairing people forget.
-const onSignal = contrast('#140800', token('signal'));
-rows.push(`  button text  ${onSignal.toFixed(2).padStart(6)}:1 on --signal   (needs 4.5)  label on a filled button`);
-if (onSignal < 4.5) failures.push(`Button label is only ${onSignal.toFixed(2)}:1 on --signal.`);
+// Text sitting ON the accent (buttons) is the pairing people forget. The
+// colour used there is a token too (--on-signal), so this reads the real value
+// rather than a copy of it that can drift.
+const PAIRS = [
+  { fg: 'on-signal', bg: 'signal', min: 4.5, role: 'label on a filled button' },
+  { fg: 'on-signal', bg: 'signal-lo', min: 4.5, role: 'label on the deeper red' },
+  { fg: 'on-signal', bg: 'text', min: 4.5, role: 'label on an ink-filled panel' },
+  { fg: 'on-ink', bg: 'text', min: 4.5, role: 'credits-block type on the ink slab' },
+  { fg: 'on-ink-2', bg: 'text', min: 4.5, role: 'small credits line on the ink slab' },
+  { fg: 'gold-hi', bg: 'text', min: 4.5, role: 'gold on the ink slab' },
+];
+for (const p of PAIRS) {
+  const r = contrast(token(p.fg), token(p.bg));
+  rows.push(`  --${p.fg} on --${p.bg.padEnd(9)} ${r.toFixed(2).padStart(6)}:1  (needs ${p.min})  ${p.role}`);
+  if (r < p.min) failures.push(`--${p.fg} is only ${r.toFixed(2)}:1 on --${p.bg}; ${p.role} needs at least ${p.min}:1.`);
+}
 
 console.log('\n  Contrast, measured from tokens.css (worst surface for each):');
 rows.forEach((r) => console.log(r));
