@@ -16,7 +16,7 @@
  * This is a REVIEW artifact, not the thing that gets published. The real site
  * ships as separate pages, which is what search engines need.
  */
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, join, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -223,8 +223,10 @@ const out = [
 const stray = out.match(NON_ASCII);
 if (stray) throw new Error(`Output is not pure ASCII - found ${stray.length} stray characters, first is U+${cp(stray[0])}`);
 
+// dist-single/ is not committed, so on a fresh clone it does not exist yet.
 const target = join(ROOT, 'dist-single', 'preview.html');
-writeFileSync(join(ROOT, 'dist-single', 'preview.html'), out, { flag: 'w' });
+mkdirSync(dirname(target), { recursive: true });
+writeFileSync(target, out, { flag: 'w' });
 
 const kb = (n) => `${(n / 1024).toFixed(0)} KB`;
 console.log(`\n  Packed ${Object.keys(pages).length} pages into one file.`);

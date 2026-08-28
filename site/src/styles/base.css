@@ -79,6 +79,9 @@ h1, h2, h3, h4 {
    register. That offset is what makes lettering feel painted rather than set,
    so the hero headline carries a single hard shadow in the gold ink. */
 .display--poster { text-shadow: .035em .045em 0 var(--gold-lo); }
+/* Page titles print in the headline ink. The home page hero is the exception:
+   it sets its three lines in three inks of its own, so it does not take this. */
+.display--red { color: var(--signal); }
 .h2 { font-size: var(--t-xxl); text-transform: uppercase; font-stretch: 90%; }
 .h3 { font-size: var(--t-xl); }
 .h4 { font-size: var(--t-lg); }
